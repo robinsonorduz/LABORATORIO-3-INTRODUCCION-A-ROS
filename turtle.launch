@@ -1,13 +1,13 @@
 <launch>
 
-  <!-- Turtle simulation node -->
+  <nodo de simulacion>
   <node
     pkg="turtlesim" 
     name="turtle_simulation" 
     type="turtlesim_node">
   </node>
 
-  <!-- Teleop keys node -->
+  <nodo de control>
   <node
     pkg="robotics-ros-1-introduction"
     name="teleop_keyboard"
