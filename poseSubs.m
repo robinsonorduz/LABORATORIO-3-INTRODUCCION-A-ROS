@@ -17,18 +17,18 @@ hold on;
 axis equal;
 
 while (1)
-    % Get pose
+    
     pose = posSub.LatestMessage;
     x = pose.X;
     y = pose.Y;
     th = pose.Theta;
     matrix = turtle_update(x, y, th);
-    % Plot current pose
+    
     clf;
     trplot(matrix, 'rgb', 'thick', 2);
     axis([-1 12 -1 12 0 1]);
     view([50 50]);
-    % Set rate
+   
     pause(0.3);
 end
 
