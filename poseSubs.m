@@ -14,7 +14,6 @@ posSub.LatestMessage.X
 close all;
 figure();
 hold on;
-grid on;
 axis equal;
 
 while (1)
@@ -28,7 +27,7 @@ while (1)
     clf;
     trplot(matrix, 'rgb', 'thick', 2);
     axis([-1 12 -1 12 0 1]);
-    view([45 50]);
+    view([50 50]);
     % Set rate
     pause(0.3);
 end
