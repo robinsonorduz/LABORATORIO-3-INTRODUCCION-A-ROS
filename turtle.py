@@ -14,7 +14,7 @@ LINEAR_MAX = 10
 ANGULAR_RES = 1
 ANGULAR_MAX = 10
 
-# Key pressed and released Callbacks
+# teclas
 
 def pressed(key):
     global CURRENT_KEY
@@ -40,11 +40,11 @@ class keyop_publisher:
         self.srv_teleportAbs = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)
         self.srv_teleportRel = rospy.ServiceProxy('/turtle1/teleport_relative', TeleportRelative)
 
-        # Polling
+       
         self.msg = Twist()
         self.rate = rospy.Rate(10) # publish messages at 10Hz
 
-        # LOOP
+        # escaneo
         
         while not rospy.is_shutdown():
 
@@ -55,7 +55,7 @@ class keyop_publisher:
             if CURRENT_KEY == Key.esc:
                 break
 
-            # Teleport
+            # aparicion
             elif CURRENT_KEY == Key.space:
                 rospy.loginfo(f'>> Rotate turtle 180°')
                 self.srv_teleportRel(0, pi)
@@ -65,7 +65,7 @@ class keyop_publisher:
                 self.msg.angular.z = 0.0
                 self.srv_teleportAbs(5, 5, 0)
             
-            # Linear and angular velocity
+            # movimientos
             elif CURRENT_KEY == 'w':
                 self.msg.linear.x = lin + LINEAR_RES if lin < LINEAR_MAX else LINEAR_MAX
             elif CURRENT_KEY == 's':
@@ -81,7 +81,7 @@ class keyop_publisher:
             if self.msg.linear.x != lin or self.msg.angular.z != ang:
                 rospy.loginfo(f'>> New velocity values [linear = {self.msg.linear.x}, angular = {self.msg.angular.z}]')
             
-            # Publish and wait
+            # envio
             self.pub_velocity.publish(self.msg)
             self.rate.sleep()
 
