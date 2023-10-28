@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 import rospy
 from geometry_msgs.msg import Twist
 from turtlesim.srv import TeleportAbsolute, TeleportRelative
@@ -31,11 +31,11 @@ class keyop_publisher:
 
     def __init__(self):
 
-        # Setup keyboard listener
+        # teclado
         self.listener = Listener(on_press=pressed, on_release=released)
         self.listener.start()
 
-        # Define publisher and services
+        # publicador y servicios
         self.pub_velocity = rospy.Publisher("/turtle1/cmd_vel", Twist, queue_size=10)
         self.srv_teleportAbs = rospy.ServiceProxy('/turtle1/teleport_absolute', TeleportAbsolute)
         self.srv_teleportRel = rospy.ServiceProxy('/turtle1/teleport_relative', TeleportRelative)
