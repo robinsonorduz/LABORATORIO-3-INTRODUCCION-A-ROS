@@ -1,0 +1,18 @@
+<launch>
+
+  <!-- Turtle simulation node -->
+  <node
+    pkg="turtlesim" 
+    name="turtle_simulation" 
+    type="turtlesim_node">
+  </node>
+
+  <!-- Teleop keys node -->
+  <node
+    pkg="robotics-ros-1-introduction"
+    name="teleop_keyboard"
+    type="turtle_teleop.py"
+    output="screen">
+  </node>
+
+</launch>
