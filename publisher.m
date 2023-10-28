@@ -1,11 +1,11 @@
 %%
 rosshutdown;
-rosinit; % Connection with roscore
+rosinit; % conexion a roscore
 %%
-velPub = rospublisher("/turtle1/cmd_vel","geometry_msgs/Twist"); % Publisher declaration
-velMsg = rosmessage(velPub); % Message declaration
+velPub = rospublisher("/turtle1/cmd_vel","geometry_msgs/Twist"); % publicacion
+velMsg = rosmessage(velPub); % declaracion
 %%
-velMsg.Linear.X = 1; % Set message value
-send(velPub, velMsg); % Send message to a topic
+velMsg.Linear.X = 1; % set de mensaje
+send(velPub, velMsg); % enviar mensaje
 pause(1)
 
